@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Spammer Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+         body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/spam.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+        header {
+            background-color: rgba(76, 175, 80, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Spammer Detection System</div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+               
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Us Content -->
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to our Spammer Detection and Fake User Identification System. In today’s digital age, maintaining the integrity of online platforms is crucial. Our system is designed to distinguish between genuine users and spammers or fake accounts, ensuring a secure and trustworthy environment.
+        </p>
+        <p>
+            <strong>Spammer Detection:</strong> Our system identifies users who engage in unsolicited activities, such as spreading malware or engaging in disruptive behavior. By analyzing user profiles and behavior, we can effectively detect and mitigate spam.
+        </p>
+        <p>
+            <strong>Fake User Identification:</strong> We utilize advanced algorithms to differentiate between real and fake accounts. This helps in preventing fraudulent activities, such as phishing or scamming, ensuring that only authentic users interact on our platform.
+        </p>
+        <p>
+            Our goal is to provide a reliable tool for online platforms to maintain user trust and security. Thank you for using our system to help create a safer digital environment.
+        </p>
+    </div>
+</body>
+</html>

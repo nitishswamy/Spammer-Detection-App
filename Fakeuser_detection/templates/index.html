@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spammer Detection and Fake User Identification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/spam.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: rgba(76, 175, 80, 0.9);
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ddd;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.result h2 {
+    color: #4CAF50;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-container {
+        flex-direction: column;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Spammer Detection System</div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Spammer Detection and Fake User Identification</h1>
+        <form method="POST">
+            <label for="ProfilePic">ProfilePic:</label>
+            <select name="ProfilePic" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="UsernameNumsLength">UsernameNumsLength:</label>
+            <input type="number" placeholder="eg:-0.45" name="UsernameNumsLength" step="any" required>
+
+            <label for="FullnameWords">FullnameWords:</label>
+            <input type="number" placeholder="eg:-3" name="FullnameWords" step="any" required>
+
+            <label for="FullnameNumsLength">FullnameNumsLength:</label>
+            <input type="number" placeholder="eg:-0.0" name="FullnameNumsLength" step="any" required>
+
+            <label for="NameEqualsUsername">NameEqualsUsername:</label>
+            <select name="NameEqualsUsername" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="DescriptionLength">DescriptionLength:</label>
+            <input type="number" placeholder="eg:-0" name="DescriptionLength" step="any" required>
+
+            <label for="ExternalURL">ExternalURL:</label>
+            <select name="ExternalURL" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <label for="Private">Private:</label>
+            <select name="Private" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <label for="Posts">Posts:</label>
+            <input type="number" placeholder="eg:-0" name="Posts" step="any" required>
+
+            <label for="Followers">Followers:</label>
+            <input type="number" placeholder="eg:-34" name="Followers" step="any" required>
+
+            <label for="Follows">Follows:</label>
+            <input type="number" placeholder="eg:-4" name="Follows" step="any" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <h2>Result: {{ result }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
